@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE HALL</title>
+</head>
+<script src="cinema.js"></script>
+<style>
+
+    button{
+        background-color: blueviolet;
+        border: 0;
+        border-radius: 10px;
+        height: 15vh;
+        width: 21vh;
+    }
+</style>
+<body onload="letssee()">
+<center>
+    <table id="hall">
+
+    </table>
+    <button onclick="redirect()">Back to admin page</button>
+    <button onclick="payy()">Continue to payment</button>
+</center>
+     
+
+
+<script>
+  dischairs = JSON.parse(localStorage.chairsAll);
+  var allchairs= dischairs[0]
+  var allinrow= dischairs[1]
+var cArr
+var displaythechairs=''
+  function letssee() {
+      console.log(dischairs)
+      for (let i = 0; i < dischairs.length; i++) {
+      }
+      displaythechairs='<tr>'
+ayy=0
+      cArr=0;
+
+
+        for (let a = 0; a < allchairs; a++) {
+
+            displaythechairs+= '<td><div style=" border:thin solid black;"><img src="chair.png" width="230" height= "100"><center><button style="height: 3vh;" onclick="tellnumber()">Select</button></center><div></td>'
+
+            cArr++
+            if (cArr == allinrow) {
+                displaythechairs+='</tr><tr>';
+                    cArr= 0;
+            }
+
+    }
+    displaythechairs +='</tr>'
+      document.getElementById("hall").innerHTML= displaythechairs;
+  }
+function redirect() {
+    adminList()
+}
+function payy() {
+    location.href="pay.html"
+}
+function tellnumber() {
+    alert("Proceed to checkpoint/payment please.")
+}
+</script>
+
+</body>
+</html>
